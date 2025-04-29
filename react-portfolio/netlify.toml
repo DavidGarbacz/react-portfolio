@@ -1,4 +1,3 @@
 [build]
-  # no `base` here, since everything is already at repo root
   command = "npm install && npm run build"
   publish = "dist"
