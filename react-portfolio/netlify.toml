@@ -1,14 +1,3 @@
-# netlify.toml
 [build]
-  # the command Netlify will run to produce your production bundle
-  command = "npm run build"
-  # where Vite spits out the final files
-  publish = "dist"
-
-# (optional) if you ever add Netlify Functions:
-#[[plugins]]
-#  package = "@netlify/plugin-functions-core"
-#
-#[functions]
-#  # folder where your serverless functions live
-#  directory = "netlify/functions"
+  command   = "npm run build"
+  publish   = "dist"
