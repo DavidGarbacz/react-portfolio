@@ -1,0 +1,10 @@
+[build]
+  # run npm install & npm run build from inside react-portfolio
+  base    = "react-portfolio"
+  command = "npm run build"
+  # once built, Netlify will publish the 'dist' dir INSIDE that base
+  publish = "dist"
+
+# if you ever add Netlify Functions:
+# [[functions]]
+#   directory = "netlify/functions"
