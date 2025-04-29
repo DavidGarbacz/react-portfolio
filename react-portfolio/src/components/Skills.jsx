@@ -1,7 +1,8 @@
 // src/components/Skills.jsx
 import React, { useEffect, useRef } from 'react'
-import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto'
 
+// your labels & percentages
 const skillData = [
   { name: 'Python & scripting', pct: 90 },
   { name: 'Control flow',      pct: 85 },
@@ -13,19 +14,26 @@ const skillData = [
   { name: 'Fetch API',         pct: 70 },
 ]
 
+// define a matching array of colours
+const barColors = [
+  '#007acc', // Python
+  '#e91e63', // Control flow
+  '#8bc34a', // File I/O
+  '#ff9800', // Git & GitHub
+  '#03a9f4', // HTML5/CSS3
+  '#9c27b0', // Responsive design
+  '#f44336', // JS & DOM
+  '#00bcd4', // Fetch API
+]
+
 export default function Skills() {
   const canvasRef      = useRef(null)
   const chartInstance  = useRef(null)
 
   useEffect(() => {
     const ctx = canvasRef.current.getContext('2d')
-
-    // If there’s an existing chart, destroy it first:
-    if (chartInstance.current) {
-      chartInstance.current.destroy()
-    }
-
-    // Create & store the new chart
+    chartInstance.current?.destroy()
+  
     chartInstance.current = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -33,22 +41,19 @@ export default function Skills() {
         datasets: [{
           label: '% Proficiency',
           data: skillData.map(s => s.pct),
-          backgroundColor: skillData.map(() => 'var(--color-accent)'),
+          backgroundColor: barColors.slice(0, skillData.length),
         }]
       },
       options: {
         indexAxis: 'y',
         scales: { x: { max: 100 } },
-        plugins: { legend: { display: false } }
+        plugins: { legend: { display: false } },
       }
     })
-
-    // Clean up when component unmounts
+  
     return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy()
-        chartInstance.current = null
-      }
+      chartInstance.current?.destroy()
+      chartInstance.current = null
     }
   }, [])
 
