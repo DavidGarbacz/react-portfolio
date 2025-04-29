@@ -1,10 +1,14 @@
+# netlify.toml
 [build]
-  # run npm install & npm run build from inside react-portfolio
-  base    = "react-portfolio"
+  # the command Netlify will run to produce your production bundle
   command = "npm run build"
-  # once built, Netlify will publish the 'dist' dir INSIDE that base
+  # where Vite spits out the final files
   publish = "dist"
 
-# if you ever add Netlify Functions:
-# [[functions]]
-#   directory = "netlify/functions"
+# (optional) if you ever add Netlify Functions:
+#[[plugins]]
+#  package = "@netlify/plugin-functions-core"
+#
+#[functions]
+#  # folder where your serverless functions live
+#  directory = "netlify/functions"
