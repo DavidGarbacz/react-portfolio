@@ -26,7 +26,10 @@ export default function Header({ onToggle, icon }) {
         Who Defines Your Path?
       </p>
 
-      <img src="/me.jpg" alt="Photo of David Garbacz" />
+      <img
+        src="/me.jpg"            // ← leading slash → fetches public/me.jpg
+        alt="Photo of David Garbacz"
+      />
     </header>
   );
 }
