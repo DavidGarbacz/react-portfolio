@@ -1,5 +1,4 @@
 [build]
-  # Just build from the root:
-  command = "npm run build"
-  # Vite outputs into this folder
+  # no `base` here, since everything is already at repo root
+  command = "npm install && npm run build"
   publish = "dist"
